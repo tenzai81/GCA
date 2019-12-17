@@ -1,23 +1,21 @@
 // Actions
-const SET_RIGS = "Spots/campings/SET_RIGS";
-const SET_LOCATION = "Spots/campings/SET_LOCATION";
-const SET_FILTERS = "Spots/campings/SET_FILTERS";
-const SET_LOADING = "Spots/campings/SET_LOADING";
+const SET_RIGS = "Spots/oilrigs/SET_RIGS";
+const SET_LOCATION = "Spots/oilrigs/SET_LOCATION";
+const SET_FILTERS = "Spots/oilrigs/SET_FILTERS";
+const SET_LOADING = "Spots/oilrigs/SET_LOADING";
 
 // Initial state
 const INITIAL_STATE = {
   spots: [],
   mylocation: {
     latitude: 29.3013,
-    longitude: 94.7977
+    longitude: -94.7977
   },
   filters: {
     sort: "distance",
     type: "all",
-    price: "free",
     option_full: true,
-    option_rated: true,
-    option_free: false
+    option_rated: true
   },
   loading: false
 };

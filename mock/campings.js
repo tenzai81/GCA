@@ -1,4 +1,4 @@
-const campings = [
+const mylocations = [
   {
     id: 1,
     type: "platform",
@@ -278,4 +278,4 @@ const campings = [
   }
 ];
 
-export { campings };
+export { mylocations };
