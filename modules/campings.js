@@ -1,5 +1,5 @@
 // Actions
-const SET_CAMPINGS = "Spots/campings/SET_CAMPINGS";
+const SET_RIGS = "Spots/campings/SET_RIGS";
 const SET_LOCATION = "Spots/campings/SET_LOCATION";
 const SET_FILTERS = "Spots/campings/SET_FILTERS";
 const SET_LOADING = "Spots/campings/SET_LOADING";
@@ -25,7 +25,7 @@ const INITIAL_STATE = {
 // Reducer
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case SET_CAMPINGS:
+    case SET_RIGS:
       return {
         ...state,
         spots: action.payload
@@ -54,10 +54,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 }
 
 // Actions
-export function setCampings(payload) {
+export function setRigs(payload) {
   return dispatch => {
     dispatch({
-      type: SET_CAMPINGS,
+      type: SET_RIGS,
       payload
     });
   };

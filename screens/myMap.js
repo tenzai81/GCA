@@ -19,7 +19,7 @@ import {
   SimpleLineIcons
 } from "@expo/vector-icons";
 
-import { setLocation, setFilters, setCampings } from "../modules/campings";
+import { setLocation, setFilters, setRigs } from "../modules/campings";
 import * as mock from "../mock/campings";
 
 const { Marker } = MapView;
@@ -31,7 +31,7 @@ class myMap extends React.Component {
   };
 
   componentDidMount() {
-    this.props.setCampings(mock.campings);
+    this.props.setRigs(mock.campings);
   }
 
   handleTab = tabKey => {
@@ -250,7 +250,7 @@ const moduleState = state => ({
 
 const moduleActions = {
   setLocation,
-  setCampings,
+  setRigs,
   setFilters
 };
 
