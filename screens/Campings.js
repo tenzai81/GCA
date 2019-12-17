@@ -92,10 +92,10 @@ class Campings extends React.Component {
           style={{ flex: 1, height: height * 0.5, width }}
           showsMyLocationButton
           initialRegion={{
-            latitude: 29.7604,
-            longitude: 95.3698,
-            latitudeDelta: 0.07,
-            longitudeDelta: 0.05
+            latitude: 29.3013,
+            longitude: -94.7977,
+            latitudeDelta: 8.0,
+            longitudeDelta: 8.0
           }}
         >
           <Marker coordinate={this.props.mylocation}>
