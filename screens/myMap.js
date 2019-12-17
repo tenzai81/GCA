@@ -12,12 +12,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { MapView } from "expo";
-import {
-  Ionicons,
-  FontAwesome,
-  Foundation,
-  SimpleLineIcons
-} from "@expo/vector-icons";
+import { Ionicons, FontAwesome, SimpleLineIcons } from "@expo/vector-icons";
 
 import { setLocation, setFilters, setRigs } from "../modules/campings";
 import * as mock from "../mock/campings";
@@ -31,7 +26,7 @@ class myMap extends React.Component {
   };
 
   componentDidMount() {
-    this.props.setRigs(mock.campings);
+    this.props.setRigs(mock.mylocations);
   }
 
   handleTab = tabKey => {
@@ -71,7 +66,7 @@ class myMap extends React.Component {
   }
 
   renderMap() {
-    const campingMarker = ({ type }) => (
+    const rigMarker = ({ type }) => (
       <View style={[styles.marker, styles[`${type}Marker`]]}>
         {type === "rig" ? (
           <FontAwesome name="map-pin" size={18} color="#000" />
@@ -106,7 +101,7 @@ class myMap extends React.Component {
 
           {mapSpots.map(marker => (
             <Marker key={`marker-${marker.id}`} coordinate={marker.latlng}>
-              {campingMarker(marker)}
+              {rigMarker(marker)}
             </Marker>
           ))}
         </MapView>
@@ -174,14 +169,14 @@ class myMap extends React.Component {
 
     return mapSpots.map(camping => {
       return (
-        <View key={`camping-${camping.id}`} style={styles.camping}>
+        <View key={`camping-${camping.id}`} style={styles.rig}>
           <ImageBackground
-            style={styles.campingImage}
-            imageStyle={styles.campingImage}
+            style={styles.rigImage}
+            imageStyle={styles.rigImage}
             source={{ uri: camping.image }}
           />
 
-          <View style={styles.campingDetails}>
+          <View style={styles.rigDetails}>
             <View
               style={{
                 flex: 1,
@@ -197,19 +192,19 @@ class myMap extends React.Component {
               </Text>
             </View>
             <View style={{ flex: 1, flexDirection: "row" }}>
-              <View style={styles.campingInfo}>
+              <View style={styles.rigInfo}>
                 <FontAwesome name="calendar" color="#FFBA5A" size={12} />
                 <Text style={{ marginLeft: 4, color: "#FFBA5A" }}>
                   {camping.installDate}
                 </Text>
               </View>
-              <View style={styles.campingInfo}>
+              <View style={styles.rigInfo}>
                 <FontAwesome name="location-arrow" color="#FF7657" size={12} />
                 <Text style={{ marginLeft: 4, color: "#FF7657" }}>
                   {camping.depth} feet
                 </Text>
               </View>
-              <View style={styles.campingInfo}>
+              <View style={styles.rigInfo}>
                 <Ionicons name="ios-add" color="black" size={12} />
                 <Text style={{ marginLeft: 4, color: "black" }}>
                   {camping.status}
@@ -323,33 +318,33 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   activeTab: {
-    borderBottomColor: "#FF7657"
+    borderBottomColor: "#711094"
   },
   activeTabTitle: {
-    color: "#FF7657"
+    color: "#711094"
   },
   map: {
     flex: 1
   },
-  camping: {
+  rig: {
     flex: 1,
     flexDirection: "row",
     borderBottomColor: "#A5A5A5",
     borderBottomWidth: 0.5,
     padding: 20
   },
-  campingDetails: {
+  rigDetails: {
     flex: 2,
     paddingLeft: 20,
     flexDirection: "column",
     justifyContent: "space-around"
   },
-  campingInfo: {
+  rigInfo: {
     flexDirection: "row",
     alignItems: "center",
     marginRight: 14
   },
-  campingImage: {
+  rigImage: {
     width: width * 0.3,
     height: width * 0.25,
     borderRadius: 6
