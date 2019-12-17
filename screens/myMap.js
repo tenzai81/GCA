@@ -25,7 +25,7 @@ import * as mock from "../mock/campings";
 const { Marker } = MapView;
 const { width, height } = Dimensions.get("screen");
 
-class Campings extends React.Component {
+class myMap extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -43,27 +43,27 @@ class Campings extends React.Component {
       <View style={styles.headerContainer}>
         <View style={styles.header}>
           <View style={{ flex: 2, flexDirection: "row" }}>
-            <View style={styles.settings}>
+            {/* <View style={styles.settings}>
               <View style={styles.location}>
                 <FontAwesome name="location-arrow" size={14} color="white" />
               </View>
-            </View>
-            <View style={styles.options}>
+            </View> */}
+            {/* <View style={styles.options}>
               <Text style={{ fontSize: 12, color: "#A5A5A5", marginBottom: 5 }}>
                 Detected Location
               </Text>
               <Text style={{ fontSize: 14, fontWeight: "300" }}>
                 Houston, Texas
               </Text>
-            </View>
+            </View> */}
           </View>
-          <View style={styles.settings}>
+          {/* <View style={styles.settings}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("Settings")}
             >
               <Ionicons name="ios-settings" size={24} color="black" />
             </TouchableOpacity>
-          </View>
+          </View> */}
         </View>
         {this.renderTabs()}
       </View>
@@ -254,7 +254,7 @@ const moduleActions = {
   setFilters
 };
 
-export default connect(moduleState, moduleActions)(Campings);
+export default connect(moduleState, moduleActions)(myMap);
 
 const styles = StyleSheet.create({
   container: {
