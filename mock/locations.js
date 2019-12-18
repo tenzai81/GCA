@@ -1,4 +1,4 @@
-const mylocations = [
+const locations = [
   {
     id: 1,
     type: "platform",
@@ -278,4 +278,4 @@ const mylocations = [
   }
 ];
 
-export { mylocations };
+export { locations };

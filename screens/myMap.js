@@ -15,7 +15,7 @@ import { MapView } from "expo";
 import { Ionicons, FontAwesome, SimpleLineIcons } from "@expo/vector-icons";
 
 import { setLocation, setFilters, setRigs } from "../modules/campings";
-import * as mock from "../mock/campings";
+import * as mock from "../mock/locations";
 
 const { Marker } = MapView;
 const { width, height } = Dimensions.get("screen");
@@ -26,7 +26,7 @@ class myMap extends React.Component {
   };
 
   componentDidMount() {
-    this.props.setRigs(mock.mylocations);
+    this.props.setRigs(mock.locations);
   }
 
   handleTab = tabKey => {
@@ -75,11 +75,11 @@ class myMap extends React.Component {
         )}
       </View>
     );
-    const { filters, campings } = this.props;
+    const { filters, locations } = this.props;
     const mapSpots =
       filters.type === "all"
-        ? campings
-        : campings.filter(camping => camping.type === filters.type);
+        ? locations
+        : locations.filter(location => location.type === filters.type);
 
     return (
       <View style={styles.map}>
@@ -161,19 +161,19 @@ class myMap extends React.Component {
   }
 
   renderList() {
-    const { filters, campings } = this.props;
+    const { filters, locations } = this.props;
     const mapSpots =
       filters.type === "all"
-        ? campings
-        : campings.filter(camping => camping.type === filters.type);
+        ? locations
+        : locations.filter(location => location.type === filters.type);
 
-    return mapSpots.map(camping => {
+    return mapSpots.map(location => {
       return (
-        <View key={`camping-${camping.id}`} style={styles.rig}>
+        <View key={`camping-${location.id}`} style={styles.rig}>
           <ImageBackground
             style={styles.rigImage}
             imageStyle={styles.rigImage}
-            source={{ uri: camping.image }}
+            source={{ uri: location.image }}
           />
 
           <View style={styles.rigDetails}>
@@ -185,29 +185,29 @@ class myMap extends React.Component {
               }}
             >
               <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-                {camping.name}
+                {location.name}
               </Text>
               <Text style={{ fontSize: 12, color: "#A5A5A5", paddingTop: 5 }}>
-                {camping.description}
+                {location.description}
               </Text>
             </View>
             <View style={{ flex: 1, flexDirection: "row" }}>
               <View style={styles.rigInfo}>
                 <FontAwesome name="calendar" color="#FFBA5A" size={12} />
                 <Text style={{ marginLeft: 4, color: "#FFBA5A" }}>
-                  {camping.installDate}
+                  {location.installDate}
                 </Text>
               </View>
               <View style={styles.rigInfo}>
                 <FontAwesome name="location-arrow" color="#FF7657" size={12} />
                 <Text style={{ marginLeft: 4, color: "#FF7657" }}>
-                  {camping.depth} feet
+                  {location.depth} feet
                 </Text>
               </View>
               <View style={styles.rigInfo}>
                 <Ionicons name="ios-add" color="black" size={12} />
                 <Text style={{ marginLeft: 4, color: "black" }}>
-                  {camping.status}
+                  {location.status}
                 </Text>
               </View>
             </View>
@@ -238,7 +238,7 @@ class myMap extends React.Component {
 }
 
 const moduleState = state => ({
-  campings: state.campings.spots,
+  locations: state.campings.spots,
   filters: state.campings.filters,
   mylocation: state.campings.mylocation
 });
