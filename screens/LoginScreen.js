@@ -45,8 +45,20 @@ class LoginScreen extends Component {
           title="Go to Huy's profile"
           onPress={() => navigate("myMap", { name: "Huy" })}
         >
-          <Text style={styles.buttonText}>LOGIN</Text>
+          <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
+        <View style={styles.container}>
+          <Text style={styles.signupText}>Do not have an account yet?</Text>
+          <TouchableOpacity onPress={this.signup}>
+            <Text
+              style={styles.signupButton}
+              onPress={() => navigate("SignupScreen")}
+            >
+              {" "}
+              Signup
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -80,6 +92,15 @@ const styles = StyleSheet.create({
     marginLeft: -5,
     width: 500,
     height: 300
+  },
+  signupText: {
+    color: "#000",
+    fontSize: 20
+  },
+  signupButton: {
+    color: "#000",
+    fontSize: 20,
+    fontWeight: "500"
   }
 });
 
