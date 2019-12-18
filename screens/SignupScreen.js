@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { NavigationActions } from "react-navigation";
 import logo from "../assets/images/GCAPurple.png";
+
 export default class SignupScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -28,17 +29,13 @@ export default class SignupScreen extends React.Component {
       Alert.alert("Passwords do not match");
       return;
     }
-    //connect with DB
-    // firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(this.state.email, this.state.password)
-    //   .then(
-    //     () => {},
-    //     error => {
-    //       Alert.alert(error.message);
-    //     }
-    //   );
-  };
+    // connect with DB
+//     firebase
+//       .auth()
+//       .createUserWithEmailAndPassword(this.state.email, this.state.password)
+//       .then(() => this.props.navigation.navigate("myMap"))
+//       .catch(error => this.setState({ errorMessage: error.message }));
+//   };
 
   onBackToLoginPress = () => {
     var navActions = NavigationActions.reset({
