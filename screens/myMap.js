@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 import { MapView } from "expo";
 import { Ionicons, FontAwesome, SimpleLineIcons } from "@expo/vector-icons";
 
-import { setLocation, setFilters, setRigs } from "../modules/campings";
+import { setLocation, setFilters, setRigs } from "../modules/actions";
 import * as mock from "../mock/locations";
 
 const { Marker } = MapView;
@@ -38,27 +38,35 @@ class myMap extends React.Component {
       <View style={styles.headerContainer}>
         <View style={styles.header}>
           <View style={{ flex: 2, flexDirection: "row" }}>
-            {/* <View style={styles.settings}>
-              <View style={styles.location}>
-                <FontAwesome name="location-arrow" size={14} color="white" />
+            {
+              <View style={styles.settings}>
+                <View style={styles.location}>
+                  <FontAwesome name="location-arrow" size={14} color="white" />
+                </View>
               </View>
-            </View> */}
-            {/* <View style={styles.options}>
-              <Text style={{ fontSize: 12, color: "#A5A5A5", marginBottom: 5 }}>
-                Detected Location
-              </Text>
-              <Text style={{ fontSize: 14, fontWeight: "300" }}>
-                Houston, Texas
-              </Text>
-            </View> */}
+            }
+            {
+              <View style={styles.options}>
+                <Text
+                  style={{ fontSize: 12, color: "#A5A5A5", marginBottom: 5 }}
+                >
+                  Detected Location
+                </Text>
+                <Text style={{ fontSize: 14, fontWeight: "300" }}>
+                  Houston, Texas
+                </Text>
+              </View>
+            }
           </View>
-          {/* <View style={styles.settings}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Settings")}
-            >
-              <Ionicons name="ios-settings" size={24} color="black" />
-            </TouchableOpacity>
-          </View> */}
+          {
+            <View style={styles.settings}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Settings")}
+              >
+                <Ionicons name="ios-settings" size={24} color="black" />
+              </TouchableOpacity>
+            </View>
+          }
         </View>
         {this.renderTabs()}
       </View>
@@ -169,7 +177,7 @@ class myMap extends React.Component {
 
     return mapSpots.map(location => {
       return (
-        <View key={`camping-${location.id}`} style={styles.rig}>
+        <View key={`rig-${location.id}`} style={styles.rig}>
           <ImageBackground
             style={styles.rigImage}
             imageStyle={styles.rigImage}
@@ -238,9 +246,9 @@ class myMap extends React.Component {
 }
 
 const moduleState = state => ({
-  locations: state.campings.spots,
-  filters: state.campings.filters,
-  mylocation: state.campings.mylocation
+  locations: state.actions.spots,
+  filters: state.actions.filters,
+  mylocation: state.actions.mylocation
 });
 
 const moduleActions = {
