@@ -39,13 +39,13 @@ class myMap extends React.Component {
         <View style={styles.header}>
           <View style={{ flex: 2, flexDirection: "row" }}>
             {
-              <View style={styles.settings}>
-                <View style={styles.location}>
-                  <FontAwesome name="location-arrow" size={14} color="white" />
-                </View>
-              </View>
+              // <View style={styles.settings}>
+              //   <View style={styles.location}>
+              //     <FontAwesome name="location-arrow" size={14} color="white" />
+              //   </View>
+              // </View>
             }
-            {
+            {/* {
               <View style={styles.options}>
                 <Text
                   style={{ fontSize: 12, color: "#A5A5A5", marginBottom: 5 }}
@@ -56,7 +56,7 @@ class myMap extends React.Component {
                   Houston, Texas
                 </Text>
               </View>
-            }
+            } */}
           </View>
           {
             <View style={styles.settings}>
