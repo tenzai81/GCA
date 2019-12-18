@@ -11,7 +11,7 @@ import {
   SafeAreaView
 } from "react-native";
 import { connect } from "react-redux";
-import { MapView } from "expo";
+import MapView from "react-native-maps";
 import { Ionicons, FontAwesome, SimpleLineIcons } from "@expo/vector-icons";
 
 import { setLocation, setFilters, setRigs } from "../modules/actions";
@@ -37,27 +37,7 @@ class myMap extends React.Component {
     return (
       <View style={styles.headerContainer}>
         <View style={styles.header}>
-          <View style={{ flex: 2, flexDirection: "row" }}>
-            {
-              // <View style={styles.settings}>
-              //   <View style={styles.location}>
-              //     <FontAwesome name="location-arrow" size={14} color="white" />
-              //   </View>
-              // </View>
-            }
-            {/* {
-              <View style={styles.options}>
-                <Text
-                  style={{ fontSize: 12, color: "#A5A5A5", marginBottom: 5 }}
-                >
-                  Detected Location
-                </Text>
-                <Text style={{ fontSize: 14, fontWeight: "300" }}>
-                  Houston, Texas
-                </Text>
-              </View>
-            } */}
-          </View>
+          <View style={{ flex: 2, flexDirection: "row" }}></View>
           {
             <View style={styles.settings}>
               <TouchableOpacity
@@ -108,7 +88,12 @@ class myMap extends React.Component {
           </Marker>
 
           {mapSpots.map(marker => (
-            <Marker key={`marker-${marker.id}`} coordinate={marker.latlng}>
+            <Marker
+              key={`marker-${marker.id}`}
+              coordinate={marker.latlng}
+              title={marker.name}
+              description={marker.description}
+            >
               {rigMarker(marker)}
             </Marker>
           ))}
